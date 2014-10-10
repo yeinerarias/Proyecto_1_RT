@@ -273,13 +273,30 @@ void config()
     tickets[3] = 300;
     tickets[4] = 2000;
     
-    int c;
-	FILE *file;
-	file = fopen("config.txt", "r");
-	if (file) {
-		while ((c = getc(file)) != EOF)
-			putchar(c);
-		fclose(file);
-}
+    FILE *ifp;
+	char *mode = "a+";
+	char username[9];  /* One extra for nul char. */
+	int score;
+
+
+	ifp = fopen("config.txt", mode);
+
+	if (ifp == NULL) {
+	  fprintf(stderr, "Can't open input file in.list!\n");
+	  exit(1);
+	}
+	else {
+		while (fscanf(ifp, "%s %d\n", username, &score) != EOF) {
+			fprintf(ifp, "%s %d\n", username, score+10);
+		}
+	}
+/*
+	ofp = fopen(outputFilename, "w");
+
+	if (ofp == NULL) {
+	  fprintf(stderr, "Can't open output file %s!\n",
+			  outputFilename);
+	  exit(1);
+	}*/
 }
 

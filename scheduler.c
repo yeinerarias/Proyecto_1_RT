@@ -74,8 +74,6 @@ void scheduler(){
     
 }
 
-
-
 void setuptimer()
 {
 	struct sigaction sa;
@@ -108,7 +106,7 @@ int main()
 		setuptimer();	
 	}
 	config();
-	sleep(1);
+	sleep(5);
     scheduler();
-    //return 0;
+    return 0;
 }
