@@ -12,38 +12,7 @@
 #include "scheduler.h"
 
 
-#define ANSI_COLOR_MAGENTA "\x1b[35m"
 void scheduler(){ 
-	int i;
-    system("clear");
-    printf("Act  Hilo    Aprox                          Trabajo terminado\n");
-    printf("--- ------- --------   ---------------------------------------------------------\n");
-    if(r == 0) {printf("->  Hilo 1: %f   ",(1+acc_h1)*2.0);}
-	else {printf("    Hilo 1: %f   ",(1+acc_h1)*2.0);}
-	for(i = 0; i < act_load_per1;i++)
-	{printf("|");}
-	printf("\n");
-	if(r == 1) {printf("->  Hilo 2: %f   ",(1+acc_h2)*2.0);}
-	else {printf("    Hilo 2: %f   ",(1+acc_h2)*2.0);}
-	for(i = 0; i < act_load_per2;i++)
-	{printf("|");}
-	printf("\n");
-	if(r == 2) {printf("->  Hilo 3: %f   ",(1+acc_h3)*2.0);}
-	else {printf("    Hilo 3: %f   ",(1+acc_h3)*2.0);}
-	for(i = 0; i < act_load_per3;i++)
-	{printf("|");}
-	printf("\n");
-	if(r == 3) {printf("->  Hilo 4: %f   ",(1+acc_h4)*2.0);}
-	else {printf("    Hilo 4: %f   ",(1+acc_h4)*2.0);}
-	for(i = 0; i < act_load_per4;i++)
-	{printf("|");}
-	printf("\n");
-	if(r == 4) {printf("->  Hilo 5: %f   ",(1+acc_h5)*2.0);}
-	else {printf("    Hilo 5: %f   ",(1+acc_h5)*2.0);}
-	for(i = 0; i < act_load_per5;i++)
-	{printf("|");}
-	printf("\n");
-
     if(r != -1)
     {
 		if(end_h1 || end_h2 || end_h3 || end_h4 || end_h5){
@@ -60,16 +29,15 @@ void scheduler(){
 					end_h5 = 0;
 			}
 			tickets[r] = 0;
-			if(count_deads == 4){exit(0);}
+			if(count_deads == 4){draw(); exit(0);}
 			count_deads += 1;
-			//printf("Alguien Murio \n");
 		}
 	}
 	if (sigsetjmp(env_struct[r],1) == 1) {
 		return;
 	}
-		
     r = Lottery_Scheduler(tickets);
+    draw();
 	siglongjmp(env_struct[r],1);
     
 }
@@ -96,17 +64,16 @@ void setuptimer()
 int main()
 {	
 	srand(time(NULL));
-    crear_hilo();	
+    crear_hilo();
+    config();	
     if(mode)
     {
-		signal(SIGUSR1,&scheduler);
+		setuptimer();	
     }
     else
     {
-		setuptimer();	
+		signal(SIGUSR1,&scheduler);
 	}
-	config();
-	sleep(5);
     scheduler();
     return 0;
 }
