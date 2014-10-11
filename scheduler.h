@@ -377,6 +377,9 @@ void draw()
 {
 	int i;
 	system("clear");
+	if(mode){printf("                                Modo expropiativo                              \n");}
+	else{printf("                               Modo no expropiativo                             \n");}
+	printf("--------------------------------------------------------------------------------\n");
     printf(C_W"Act  Hilo    Aprox                          Trabajo terminado\n");
     printf("--- ------- --------  ----------------------------------------------------------\n");
     if(r == 0) {printf("->  Hilo 1: %f  ",(1+acc_h1)*2.0);}
