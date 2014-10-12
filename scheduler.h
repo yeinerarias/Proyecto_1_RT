@@ -273,7 +273,7 @@ void crear_hilo()
 void config()
 {    
     FILE *ifp;
-	char username[2];
+	char username[3];
 	int data;
 	int i = 0;
 	int selec;
@@ -385,27 +385,27 @@ void draw()
     if(r == 0) {printf("->  Hilo 1: %f  ",(1+acc_h1)*2.0);}
 	else {printf("    Hilo 1: %f  ",(1+acc_h1)*2.0);}
 	for(i = 0; i < act_load_per[0]*54/100;i++)
-	{if(i<17){printf(C_R "|");}else if(i<35){printf(C_Y "|");}else{printf(C_G "|");}}
+	{if(act_load_per[0]*54/100<17){printf(C_R "|");}else if(act_load_per[0]*54/100<35){printf(C_Y "|");}else{printf(C_G "|");}}
 	printf(C_W"%d%c\n",act_load_per[0],37);
 	if(r == 1) {printf("->  Hilo 2: %f  ",(1+acc_h2)*2.0);}
 	else {printf("    Hilo 2: %f  ",(1+acc_h2)*2.0);}
 	for(i = 0; i < act_load_per[1]*54/100;i++)
-	{if(i<17){printf(C_R "|");}else if(i<35){printf(C_Y "|");}else{printf(C_G "|");}}
+	{if(act_load_per[1]*54/100<17){printf(C_R "|");}else if(act_load_per[1]*54/100<35){printf(C_Y "|");}else{printf(C_G "|");}}
 	printf(C_W"%d%c\n",act_load_per[1],37);
 	if(r == 2) {printf("->  Hilo 3: %f  ",(1+acc_h3)*2.0);}
 	else {printf("    Hilo 3: %f  ",(1+acc_h3)*2.0);}
 	for(i = 0; i < act_load_per[2]*54/100;i++)
-	{if(i<17){printf(C_R "|");}else if(i<35){printf(C_Y "|");}else{printf(C_G "|");}}
+	{if(act_load_per[2]*54/100<17){printf(C_R "|");}else if(act_load_per[2]*54/100<35){printf(C_Y "|");}else{printf(C_G "|");}}
 	printf(C_W"%d%c\n",act_load_per[2],37);
 	if(r == 3) {printf("->  Hilo 4: %f  ",(1+acc_h4)*2.0);}
 	else {printf("    Hilo 4: %f  ",(1+acc_h4)*2.0);}
 	for(i = 0; i < act_load_per[3]*54/100;i++)
-	{if(i<17){printf(C_R "|");}else if(i<35){printf(C_Y "|");}else{printf(C_G "|");}}
+	{if(act_load_per[3]*54/100<17){printf(C_R "|");}else if(act_load_per[3]*54/100<35){printf(C_Y "|");}else{printf(C_G "|");}}
 	printf(C_W"%d%c\n",act_load_per[3],37);
 	if(r == 4) {printf("->  Hilo 5: %f  ",(1+acc_h5)*2.0);}
 	else {printf("    Hilo 5: %f  ",(1+acc_h5)*2.0);}
 	for(i = 0; i < act_load_per[4]*54/100;i++)
-	{if(i<17){printf(C_R "|");}else if(i<35){printf(C_Y "|");}else{printf(C_G "|");}}
+	{if(act_load_per[4]*54/100<17){printf(C_R "|");}else if(act_load_per[4]*54/100<35){printf(C_Y "|");}else{printf(C_G "|");}}
 	printf(C_W"%d%c\n",act_load_per[4],37);
 }
 
