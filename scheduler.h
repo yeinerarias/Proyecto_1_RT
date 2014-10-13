@@ -19,7 +19,6 @@ int tickets[5];
 #define C_G "\x1b[32m"
 
 ////////////////////////////////////////////////////////////////////////
-#define SECOND 800000
 #define STACK_SIZE 40096
 
 char stack1[STACK_SIZE];
