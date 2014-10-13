@@ -6,7 +6,6 @@
 #include <sys/time.h>
 #include <time.h>
 #include <stdlib.h>
-#include <ncurses.h>
 #include <math.h>
 
 #include "scheduler.h"
@@ -53,10 +52,10 @@ void setuptimer()
 
 	timer.it_value.tv_sec = 0;
 	timer.it_value.tv_usec = quantum*1000;
-	// ... and every 250 msec after that.
+
 	timer.it_interval.tv_sec = 0;
 	timer.it_interval.tv_usec = quantum*1000;
-	// Start a real timer. It counts down whenever this process is executing. 
+
 	setitimer (ITIMER_REAL, &timer, NULL);
 }
 
@@ -64,7 +63,7 @@ void setuptimer()
 int main()
 {	
 	srand(time(NULL));
-    crear_hilo();
+    create_threads();
     config();	
     if(mode)
     {

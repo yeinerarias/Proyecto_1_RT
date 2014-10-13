@@ -222,29 +222,23 @@ void hilo5( void )
 	while(1);
 }
  
-void crear_hilo()
+void create_threads()
 {
     address_t sp, pc;
     
     sp = (address_t)stack1 + STACK_SIZE;
-    //sp = malloc(STACK_SIZE) + STACK_SIZE;
     pc = (address_t)hilo1; 
     
     sigsetjmp(env_struct[0],1);
     (env_struct[0]-> __jmpbuf)[JB_SP] = translate_address(sp);
     (env_struct[0]-> __jmpbuf)[JB_PC] = translate_address(pc);
-    //(env_struct[0]-> __jmpbuf)[8] = translate_address(pc);
-    //(env_struct[0]-> __jmpbuf)[JB_PC] = translate_address(pc);
-    //sigemptyset(&env_struct[0]-> __saved_mask);     
 
     sp = (address_t)stack2 + STACK_SIZE ;
-    //sp = malloc(STACK_SIZE) + STACK_SIZE;
     pc = (address_t)hilo2;
  
     sigsetjmp(env_struct[1],1);
     (env_struct[1]-> __jmpbuf)[JB_SP] = translate_address(sp);
-    (env_struct[1]-> __jmpbuf)[JB_PC] = translate_address(pc);
-    //sigemptyset(&env_struct[1]-> __saved_mask);    
+    (env_struct[1]-> __jmpbuf)[JB_PC] = translate_address(pc); 
     
     sp = (address_t)stack3 + STACK_SIZE ;
     pc = (address_t)hilo3;
@@ -282,7 +276,7 @@ void config()
 		ifp = fopen("config.txt", "r");
 
 		if (ifp == NULL) {
-		  fprintf(stderr, "Can't open input file in.list!\n");
+		  fprintf(stderr, "No se pudo abrir el archivo\n");
 		  exit(1);
 		}
 		else {
